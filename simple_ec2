@@ -1,8 +1,17 @@
 provider "aws" {
 }
+provider "aws" {
+alias = "usa"
+}
 
 
 resource "aws_instance" "pipeline_server" {
-  ami           = "ami-05a5f6298acdb05b6"
+  ami           = "ami-05a5f6298acdb05b6" # north virginia
+  instance_type = "t2.micro"
+provider = "usa"
+}
+
+resource "aws_instance" "pipeline_server" {
+  ami           = "ami-0931978297f275f71" # ohio
   instance_type = "t2.micro"
 }
